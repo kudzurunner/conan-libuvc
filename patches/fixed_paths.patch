@@ -1,0 +1,32 @@
+diff -ruN a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt	2019-02-25 00:09:16.427658000 +0300
++++ b/CMakeLists.txt	2019-02-25 00:21:01.484373800 +0300
+@@ -22,11 +22,11 @@
+ 
+ if(WIN32)
+ 
+-  find_library(LIBUSB_LIBRARIES usb-1.0
+-  PATHS /opt/local/lib)
++  find_library(LIBUSB_LIBRARIES libusb-1.0
++  PATHS /opt/local/lib ${CONAN_LIB_DIRS_LIBUSB})
+ 
+   find_path(LIBUSB_INCLUDE_DIR libusb-1.0/libusb.h
+-  PATHS /opt/local/include)
++  PATHS /opt/local/include ${CONAN_INCLUDE_DIRS_LIBUSB})
+ else()
+   find_package(PkgConfig)
+   pkg_check_modules(LIBUSB libusb-1.0)
+@@ -34,10 +34,10 @@
+ 
+ 
+ if(WIN32)
+-  find_library(PTHREAD_LIBRARIES pthreadVC2
+-        PATHS D:/install/pthreads-w32-2-9-1-release/lib/x64)
++  find_library(PTHREAD_LIBRARIES pthreads4w
++        PATHS D:/install/pthreads-w32-2-9-1-release/lib/x64 ${CONAN_LIB_DIRS_PTHREADS4W})
+   find_path(PTHREAD_INCLUDE_DIR pthread.h
+-        PATHS D:/install/pthreads-w32-2-9-1-release/include)
++        PATHS D:/install/pthreads-w32-2-9-1-release/include ${CONAN_INCLUDE_DIRS_PTHREADS4W})
+   SET(EXTRA_DEFS "-D_TIMESPEC_DEFINED")
+   add_definitions(${EXTRA_DEFS})
+ else()
