@@ -3,7 +3,7 @@ from conans import ConanFile, CMake, tools
 
 class LibuvcConan(ConanFile):
     name = "libuvc"
-    version = "0.0.9"
+    version = "0.0.10"
     license = "https://raw.githubusercontent.com/pupil-labs/libuvc/master/LICENSE.txt"
     author = "KudzuRunner"
     url = "https://github.com/kudzurunner/conan-libuvc"
@@ -18,7 +18,7 @@ class LibuvcConan(ConanFile):
     suffix = ""
 
     def requirements(self):
-        self.requires.add('libusb/1.0.22@bincrafters/stable')
+        self.requires.add('libusb/1.0.23@bincrafters/stable')
         if self.settings.os == "Windows":
             self.requires.add('pthreads4w/2.9.1@bincrafters/stable')
 
